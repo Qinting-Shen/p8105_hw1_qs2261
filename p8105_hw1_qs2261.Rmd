@@ -31,7 +31,7 @@ Now I will make a scatterplot of  `temp` and `time_hour`
 ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) + geom_point()
 ```
 
-This scatterplot indicates that the temperature fluctuated up and down every day, and the temperature shows an overall rising trend, reaching the highest temperature on the 14th. The humidity from Jan 11th to 14th remained a high level (>80).
+* This scatterplot indicates that the temperature fluctuated up and down every day, and the temperature shows an overall rising trend, reaching the highest temperature on the 14th. The humidity from Jan 11th to 14th remained a high level (>80).
 
 ```{r}
 ggsave("scatterplot.pdf")
