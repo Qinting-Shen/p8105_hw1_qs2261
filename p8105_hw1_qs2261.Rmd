@@ -22,7 +22,7 @@ data("early_january_weather")
 
 * There are `r nrow(early_january_weather)` rows and `r ncol(early_january_weather)` columns in the dataset.
 
-* The mean temperature is `r mean (pull(early_january_weather, temp))`.
+* The mean temperature is `r mean (pull(early_january_weather, temp))` F.
 
 
 Now I will make a scatterplot of  `temp` and `time_hour`
@@ -33,9 +33,50 @@ ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) + geo
 
 * This scatterplot indicates that the temperature fluctuated up and down every day, and the temperature shows an overall rising trend, reaching the highest temperature on the 14th. The humidity from Jan 11th to 14th remained a high level (>80).
 
+save the scatterplot:
 ```{r}
 ggsave("scatterplot.pdf")
 ```
+
+## Problem 2
+
+create a dataframe, including
+
+1. `samp`: a random sample of size 10 from a standard Normal distribution
+1. `log_vec`: a logical vector indicating whether elements of the sample are greater than 0
+1. `char_vec`: a character vector of length 10
+1. `fac_vec`: a factor vector of length 10, with 3 different factor “levels”
+
+```{r}
+hw1_df= tibble(
+  samp = rnorm(10),
+  log_vec = samp>0,
+  char_vec = c ("A","B","C","D","E","F","G","H","I","J"),
+  fac_vec = factor(c("small","medium","large","small","medium","large","small","medium","small","large"))
+)
+```
+
+now take the mean of each variable:
+
+```{r}
+mean(pull(hw1_df, samp))
+mean(pull(hw1_df, log_vec))
+mean(pull(hw1_df, char_vec))
+mean(pull(hw1_df, fac_vec))
+```
+
+* when calculating the mean, random sample variable and logical vector works, while character and factor variable don't work since they are not numeric or logical.
+
+Write a code chunk that applies the `as.numeric` function to the logical, character, and factor variables
+
+```{r, results='hide'}
+as.numeric(pull(hw1_df,log_vec))
+as.numeric(pull(hw1_df,char_vec))
+as.numeric(pull(hw1_df,fac_vec))
+```
+
+* I got a warning message saying NAs introduced by coercion when converting character_vector into numeric variable. This is because the character variable does not has a numeric value. Yes, this help explains why I got warning message when I tried to take the mean -- the value of character_vector is NA. which cannot be calculated.
+
 
 
 
