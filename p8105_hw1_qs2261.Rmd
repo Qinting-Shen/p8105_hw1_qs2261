@@ -7,9 +7,9 @@ output: github_document
 
 ## Problem 1
 
-```{r, echo = FALSE} 
+```{r} 
 library (moderndive) 
-library(tidyverse)
+library (tidyverse)
 ```
 
 Now I will load the `early_january_weather` dataset
@@ -36,7 +36,7 @@ ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) + geo
 Save the scatterplot:
 
 ```{r}
-ggsave("scatterplot.pdf")
+ggsave("scatterplot.png")
 ```
 
 ## Problem 2
